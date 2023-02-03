@@ -13,7 +13,7 @@ X = 0
 Y = 1
 
 
-class InvalidMovingError(BaseException):
+class InvalidMovingError(Exception):
     def __init__(self, *args: object) -> None:
         super().__init__(*args)
 
@@ -24,10 +24,10 @@ class Snake:
 
     def move(self, direction: Direction) -> None:
         next = {
-            Direction.DOWN: (self.body[0][X], self.body[0][Y]+1),
-            Direction.UP: (self.body[0][X], self.body[0][Y]-1),
-            Direction.LEFT: (self.body[0][X]-1, self.body[0][Y]),
-            Direction.RIGHT: (self.body[0][X]+1, self.body[0][Y])
+            Direction.RIGHT: (self.body[0][X], self.body[0][Y]+1),
+            Direction.LEFT: (self.body[0][X], self.body[0][Y]-1),
+            Direction.UP: (self.body[0][X]-1, self.body[0][Y]),
+            Direction.DOWN: (self.body[0][X]+1, self.body[0][Y])
         }[direction]
         # 先验证新位置合法性，要求不是身体的一部分，不超过边界
         if MAX_GAMEBOARD_SIZE >= next[X] >= 0 and MAX_GAMEBOARD_SIZE >= next[Y] >= 0 and self.body.count(next) == 0:
