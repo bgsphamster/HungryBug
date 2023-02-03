@@ -11,7 +11,7 @@ class Game:
     def clear_screen(self):
         print("\033c", end="")
 
-    def write_to_phisical_screen(self):
+    def write_to_physical_screen(self):
         self.clear_screen()
         board: list[list[bool]] = [[False for i in range(
             MAX_GAMEBOARD_SIZE)] for j in range(MAX_GAMEBOARD_SIZE)]
@@ -44,7 +44,7 @@ class Game:
         # 主循环
         try:
             while True:
-                self.write_to_phisical_screen()
+                self.write_to_physical_screen()
                 opr = msvcrt.getch().decode().lower()
                 match opr:
                     case 'w':
