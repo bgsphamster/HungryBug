@@ -1,5 +1,5 @@
 from enum import Enum
-
+import food
 
 class Direction(Enum):
     LEFT = 0
@@ -34,6 +34,10 @@ class Snake:
             # 把最后一节身体移到移动的目标位置，形成新的蛇头
             self.body.pop()
             self.body.insert(0, next)
+            
+            # 如果是食物，吃
+            if(next == food.food_position):
+                self.eat(direction)
             return
         raise InvalidMovingError("Invalid moving")
 
@@ -45,3 +49,4 @@ class Snake:
             Direction.RIGHT: (self.body[0][X]+1, self.body[0][Y])
         }[where]
         self.body.insert(0, next)
+        food.food_position = __import__("game").gen_random_food_position(self)
