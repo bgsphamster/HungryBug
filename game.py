@@ -1,4 +1,3 @@
-import time
 from snake import *
 import sys
 import msvcrt
@@ -45,7 +44,7 @@ class Game:
     def show_death(self):
         self.clear_screen()
         print("你死了！")
-        print("按 y 重新开始，其他键退出")
+        print("yを押して再開し、他のkeyは終了します")
         opr = msvcrt.getch().decode().lower()
         if opr == 'y':
             self.__init__()
@@ -55,8 +54,9 @@ class Game:
 
     def main(self):
         self.clear_screen()
-        print("贪吃蛇（Python console windows v0.1）")
-        print("按任意键开始")
+        print("贪 吃 蛇")
+        print('version 锟斤拷烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫烫')
+        print("任意のキーを押して開始")
         msvcrt.getch()
         self.clear_screen()
         # 主循环
@@ -75,5 +75,3 @@ class Game:
                         self.snake.move(Direction.RIGHT)
         except Exception:
             self.show_death()
-        # except InvalidMovingError:
-        #     self.show_death()
